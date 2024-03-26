@@ -1,0 +1,64 @@
+:root {
+  --enableModalValue: 15%
+}
+
+.modal {
+  position: fixed;
+  background-color: white;
+  top: -100%;
+  right: 0;
+  width: 100%;
+  height: 70%;
+  z-index: 11;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
+  color: black;
+  transition: all 0.4s ease-in-out;
+}
+
+.modalHeader{
+  position: sticky;
+  top: 0;
+  height: 5rem;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #FFF;
+  z-index: 8;
+}
+
+.modalHeader button {
+  position: absolute;
+  right: 5%;
+  cursor: pointer;
+  background-color: var(--danger);
+  border-radius: 0;
+  z-index: 12;
+  width: 5rem;
+
+}
+
+.modalFooter {
+  width: 20%;
+  margin: 2rem;
+}
+
+.modalBody {
+  padding: 2rem;
+}
+
+.enableHalfPageModal {
+  top: var(--enableModalValue);
+}
+
+.doneElement {
+  position: sticky;
+  bottom: 0;
+}
+
+.hide {
+  display: none;
+}

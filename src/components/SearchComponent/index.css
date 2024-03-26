@@ -1,0 +1,13 @@
+.search-body-container {
+    margin: 2rem auto;
+    width: 50%;
+}
+
+.search-body-container label {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-body-container input[type='submit'] {
+    width: auto;
+}

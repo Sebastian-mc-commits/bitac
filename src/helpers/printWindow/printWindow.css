@@ -1,0 +1,58 @@
+@font-face {
+  font-family: "montserrat";
+  src: url(../../assets/fonts/Montserrat-Italic-VariableFont_wght.ttf)
+    format(".ttf");
+}
+
+* {
+  font-family: "montserrat", serif;
+  font-size: 1.2rem;
+  inline-size: 100%;
+  overflow-wrap: break-word;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex inline;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+  border-bottom: 2px black solid;
+}
+
+.container > * {
+  width: 50%;
+}
+
+@page {
+  size: A3;
+  margin: 0;
+}
+
+
+.destination {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.destinationFields {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+@media print {
+  .container {
+    page-break-after: always;
+    gap: 1rem;
+  }
+
+  /* .container:nth-of-type(3n) {
+  } */
+}

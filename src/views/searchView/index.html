@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles.css" />
+  <title>Bc</title>
+</head>
+
+<script src="../../utils/functions/DOM/header/index.js" type="module"></script>
+<component-header></component-header>
+
+<body hidden>
+  <div class="destinationValues">
+    <component-header-message-initializer data-modal-header-id="headerMessage"></component-header-message-initializer>
+  </div>
+  <div class="headerPrintMessage">
+    <component-header-message-initializer
+      data-modal-header-id="headerPrintMessage"></component-header-message-initializer>
+  </div>
+  <header>
+    <c-search></c-search>
+  </header>
+
+  <component-half-page-modal></component-half-page-modal>
+  <main id="mainContainer">
+    <p class="hideContent" data-reduce-type="onHideContent">&#9776;</p>
+    <nav class="renderContentContainer">
+      <section class="renderContentSectionContainer" id="renderContentSectionContainer">
+        <div class="renderContent" data-reduce-render="renderSenderValues"></div>
+        <button data-reduce-type="onClickCompanyRender" class="custom-button-1" data-text="CAMBIAR">
+          Cambiar
+        </button>
+      </section>
+      <section class="renderData" data-reduce-type="onRenderData" data-mousemove-type="onSelectData">
+        <div id="renderContainer" data-reduce-render="renderContainer" data-reduce-type="inputPrintQuantity"></div>
+      </section>
+    </nav>
+  </main>
+  <component-modal-footer></component-modal-footer>
+</body>
+<script src="../../utils/functions/DOM/footer/index.js" type="module"></script>
+<component-footer></component-footer>
+<script type="module" src="main.js"></script>
+
+</html>

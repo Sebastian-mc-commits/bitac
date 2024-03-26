@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./createView.css">
+  <title>Bc</title>
+</head>
+
+<body hidden>
+  <script src="./utils/functions/DOM/header/index.js" type="module"></script>
+  <component-header></component-header>
+  <component-half-page-modal></component-half-page-modal>
+  <section class="print">
+    <component-header-message-initializer data-modal-header-id="headerPrintMessage"></component-header-message-initializer>
+  </section>
+  <main class="container">
+    <div class="selectEventContainer">
+
+      <div class="shadow form setScale" id="mainContainer">
+        <h2>Remitente</h2>
+        <component-form-handler data-form-handler="senderId"></component-form-handler>
+        <div class="formSelects">
+          <form id="formSelects" data-type="sender">
+            <span>
+              <p>Ciudad</p>
+              <select name="cityId" data-reduce-render="renderCities">
+                <option value="">Vacio</option>
+              </select>
+            </span>
+
+            <span>
+              <p>Transportador</p>
+              <select name="transporterId" data-reduce-render="renderTransporters">
+                <option value="">Vacio</option>
+              </select>
+            </span>
+
+            <span>
+              <p>Remitente</p>
+              <select data-reduce-render="renderSenders" data-reduce-type="selectChange" data-type="sender">
+              </select>
+            </span>
+            <textarea name="draw" placeholder="Nota (Opcional)" cols="30" rows="3" class="shadow"></textarea>
+          </form>
+          <button data-reduce-type="selectDataForForm" class="createdItems" data-type="sender">Remitentes
+            Creados</button>
+        </div>
+      </div>
+
+      <div class="toggleEvent" id="mainContainer">
+        <button data-reduce-type="toggleButton" class="radiusButton"></button>
+      </div>
+
+      <div class="shadow form" id="mainContainer">
+        <h2>Destinatario</h2>
+        <component-form-handler data-form-handler="destinationId"></component-form-handler>
+        <div class="formSelects">
+          <form id="formSelects" data-type="destination">
+            <span>
+              <p>Ciudad</p>
+              <select name="cityId" data-reduce-render="renderCities">
+              </select>
+            </span>
+
+            <span>
+              <p>Destinatario</p>
+              <select data-reduce-render="renderDestinations" data-type="destination" data-reduce-type="selectChange">
+              </select>
+            </span>
+          </form>
+          <button data-reduce-type="selectDataForForm" class="createdItems" data-type="destination">Destinatarios
+            Creados</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <component-modal-footer></component-modal-footer>
+  <script src="./main.js" type="module"></script>
+</body>
+<script src="./utils/functions/DOM/footer/index.js" type="module"></script>
+<component-footer></component-footer>
+
+</html>

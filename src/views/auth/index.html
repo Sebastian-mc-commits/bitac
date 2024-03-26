@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles.css">
+  <title>Bc</title>
+</head>
+
+<script src="../../utils/functions/DOM/header/index.js" type="module"></script>
+
+<body hidden>
+  <component-header data-show-header="false"></component-header>
+
+  <div class="welcome-message-container">
+    <h1 class="welcome-message">Bienvenido</h1>
+  </div>
+
+  <component-page-loader data-page-loader="1">
+    <h1>Any Element</h1>
+  </component-page-loader>
+
+  <nav class="codeCreation" id="mainContainer">
+    <section class="section-1">
+      <component-bounce-animation data-bounce="1">
+        <div class="form-container shadow">
+          <component-form-handler data-form-handler="userFormId" class="formAuth"></component-form-handler>
+          <span data-reduce-type="changeFormState" class="helperMessage">No estoy registrado</span>
+          <span id="title" class="name-render"></span>
+        </div>
+
+        <div class="form-container shadow">
+          <component-form-handler data-form-handler="logInFormId" class="formAuth"></component-form-handler>
+          <span data-reduce-type="changeFormState" class="helperMessage">Ya estoy registrado</span>
+          <span id="title" class="name-render"></span>
+        </div>
+
+      </component-bounce-animation>
+
+    </section>
+
+    <section class="section-2">
+      <div>
+        <component-bounce-animation data-bounce="2">
+          <div>
+            <button class="custom-button-2" data-reduce-type="getCode">Obtener Codigo</button>
+          </div>
+
+          <div class="shadow set-code">
+            <input type="text" placeholder="Ingresar Código" data-reduce-type="code">
+            <button data-reduce-type="setDataByCode" class="custom-button-2">Enviar</button>
+          </div>
+        </component-bounce-animation>
+        <button data-reduce-type="changeCodeOpsState" class="custom-button-3">Cambiar</button>
+      </div>
+    </section>
+  </nav>
+
+  <script src="./main.js" type="module"></script>
+</body>
+<script src="../../utils/functions/DOM/footer/index.js" type="module"></script>
+<component-footer></component-footer>
+
+</html>

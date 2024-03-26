@@ -1,0 +1,89 @@
+html {
+  background-color: var(--light);
+}
+
+.selectEventContainer {
+  position: relative;
+  inset: 0;
+  width: 90%;
+  margin: auto;
+  min-height: 80vh;
+  max-height: 90vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.toggleEvent {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.selectEventContainer form {
+  position: relative;
+  padding: 1rem;
+  display: flex;
+  /* justify-content: space-around; */
+  gap: 3rem;
+  flex-direction: column;
+  min-height: 120%;
+  max-height: 120%;
+  transition: transform 0.4s;
+}
+
+.selectEventContainer .form {
+  display: flex;
+  flex-direction: column;
+  min-width: 45%;
+  overflow: auto;
+  background-color: white;
+  padding: 1rem;
+  margin: 0 2rem;
+  transition: transform 0.3s;
+}
+
+.selectEventContainer .form input {
+  width: auto;
+}
+.selectEventContainer form .createdItems {
+  margin-bottom: 2rem;
+}
+
+.selectEventContainer .setScale {
+  transform: scale(0.4);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.formSelects form span {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.formSelects button {
+  width: 50%;
+  margin-bottom: 2rem;
+}
+.print {
+  position: fixed;
+  top: 0;
+  right: 60%;
+  z-index: 7;
+}
+.renderContainer {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.renderContainer > * {
+  border-right: 2px black solid;
+}

@@ -1,0 +1,41 @@
+:root {
+  --bar-width: 30%;
+  --transition-time-type-rb: 0.3s ease-in-out;
+}
+
+.right-bar {
+  position: fixed;
+  top: 2%;
+  bottom: 2%;
+  right: 1rem;
+  width: var(--bar-width);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #171c2b;
+  border-radius: 1rem;
+  transition: all var(--transition-time-type-rb);
+  padding: 1rem;
+  z-index: 5;
+}
+
+.right-bar > * {
+  transition: background 0.6s;
+  border-radius: 5px;
+  color: white;
+  opacity: 0.6;
+  cursor: default;
+  padding: 1rem 2rem;
+  border-bottom: 2px #959cad solid;
+}
+.right-bar > *:hover {
+  background-color: #959cad;
+}
+.hide-bar {
+  right: calc(-1 * var(--bar-width));
+}
+
+.move-body-rb {
+  width: calc(100% - (var(--bar-width) + 5%));
+}

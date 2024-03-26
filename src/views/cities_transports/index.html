@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../createView.css">
+  <title>Bc</title>
+</head>
+
+<body hidden>
+  <script src="../../utils/functions/DOM/header/index.js" type="module"></script>
+  <component-header></component-header>
+  <main class="container">
+    <div class="selectEventContainer">
+
+      <div class="shadow form setScale" id="mainContainer" data-type="transporterForm">
+        <h2>Transportadores</h2>
+        <component-form-handler data-form-handler="transporterId"></component-form-handler>
+      </div>
+
+      <div class="toggleEvent" id="mainContainer">
+        <button data-reduce-type="toggleButton" class="radiusButton"></button>
+      </div>
+
+      <div class="shadow form" id="mainContainer" data-type="cityForm">
+        <h2>Ciudades</h2>
+        <component-form-handler data-form-handler="cityId"></component-form-handler>
+      </div>
+    </div>
+
+  </main>
+
+  <component-modal-footer></component-modal-footer>
+  <script src="./main.js" type="module"></script>
+</body>
+<script src="../../utils/functions/DOM/footer/index.js" type="module"></script>
+<component-footer></component-footer>
+
+</html>

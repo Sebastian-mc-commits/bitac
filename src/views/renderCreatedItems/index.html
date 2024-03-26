@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css">
+    <title>Bc</title>
+  </head>
+
+<body hidden>
+  <script src="../../utils/functions/DOM/header/index.js" type="module"></script>
+  <component-header></component-header>
+
+  <div class="printContainer shadow" id="printContainer"></div>
+
+  <div id="header" class="header shadow">
+    <h1>¡Bienvenido!</h1>
+
+    <div class="buttons" id="mainContainer">
+      <button class="btnDestination" data-reduce-type="senderAndDestination" data-type="destination">Destinatarios</button>
+      <button class="btnCity" data-reduce-type="cityAndTransporter" data-type="city">Ciudad</button>
+      <button class="btnSender" data-reduce-type="senderAndDestination" data-type="sender">Remitentes</button>
+      <button class="btnTransporter" data-reduce-type="cityAndTransporter" data-type="transporter">Transportadores</button>
+    </div>
+  </div>
+  <main>
+    <nav class="createdItems" id="mainContainer" data-type="renderElements">
+      <section>¿Como te encuentras?</section>
+    </nav>
+  </main>
+  <component-right-bar></component-right-bar>
+  <component-modal-footer></component-modal-footer>
+  <script src="./main.js" type="module"></script>
+</body>
+<script src="../../utils/functions/DOM/footer/index.js" type="module"></script>
+<component-footer></component-footer>
+</html>

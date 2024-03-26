@@ -1,0 +1,28 @@
+.inputContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* gap: 2rem; */
+  /* margin: 2rem 0; */
+  text-align: left;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.inputContainer .error {
+  background-color: rgb(236, 100, 100);
+  padding: 1rem;
+  margin: 1rem;
+  border-left: 3px rgb(80, 5, 5) solid;
+  z-index: 25;
+}
+
+.noErrorFound {
+  display: none;
+}
+
+.inputContainer input {
+  display: inline;
+  width: 100%;
+  /* max-width: 70%; */
+}

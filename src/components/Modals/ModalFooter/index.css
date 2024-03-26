@@ -1,0 +1,35 @@
+.modalFooterMessage {
+  position: fixed;
+  width: 25rem;
+  height: 12rem;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--dark-dusky);
+  color: white;
+  font-size: medium;
+  font-weight: bold;
+  display: none;
+  gap: 1rem;
+  animation: shake 0.3s;
+  z-index: 20;
+}
+
+.modalFooterMessage img {
+  width: 50%;
+}
+
+.modalFooterMessage .message {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  overflow: auto;
+  width: 50%;
+}
+
+.modalFooterMessage .message p {
+  font-size: small;
+}
+
+.showFooterMessage {
+  display: flex;
+}

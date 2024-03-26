@@ -1,0 +1,35 @@
+{
+    "Sender": [
+        {
+            "phoneNumber": "1100 | 5500050",
+            "locationDescription": "#####",
+            "name": "Bc S.A.S",
+            "isFavorite": "1",
+            "cityId": "1",
+            "transporterId": "1",
+            "nit": "10610000"
+        }
+    ],
+    "Destination": [
+        {
+            "cityId": "1",
+            "nit": "104073086 vcv",
+            "name": "Bebe",
+            "senderId": "UNKNOWN",
+            "locationDescription": "#####",
+            "phoneNumber": "22000231 | 100000 | 20000"
+        }
+    ],
+    "City": [
+        {
+            "id": "1",
+            "name": "Medallo"
+        }
+    ],
+    "Transporter": [
+        {
+            "name": "SAS",
+            "id": "1"
+        }
+    ]
+}

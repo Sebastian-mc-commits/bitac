@@ -1,0 +1,97 @@
+{
+  "build": {
+    "beforeDevCommand": "",
+    "beforeBuildCommand": "",
+    "devPath": "../src",
+    "distDir": "../src",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "bitac",
+    "version": "0.0.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "fs": {
+        "all": true,
+        "copyFile": true,
+        "createDir": true,
+        "exists": true,
+        "readDir": true,
+        "readFile": true,
+        "removeDir": true,
+        "removeFile": true,
+        "renameFile": true,
+        "scope": [],
+        "writeFile": true
+      },
+      "shell": {
+        "all": false,
+        "open": true
+      },
+      "dialog": {
+        "all": true,
+        "ask": true,
+        "confirm": true,
+        "message": true,
+        "open": true,
+        "save": true
+      }
+    },
+    "bundle": {
+      "active": true,
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/btc.icns",
+        "icons/btc.ico"
+      ],
+      "identifier": "com.bitac.app",
+      "targets": "all",
+      "windows": {
+        "allowDowngrades": true,
+        "certificateThumbprint": null,
+        "digestAlgorithm": null,
+        "nsis": null,
+        "timestampUrl": null,
+        "tsp": false,
+        "webviewFixedRuntimePath": null,
+        "webviewInstallMode": {
+          "silent": true,
+          "type": "downloadBootstrapper"
+        },
+        "wix": null
+      }
+    },
+    "security": {
+      "dangerousDisableAssetCspModification": true,
+      "csp": null
+    },
+    "updater": {
+      "active": false
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "resizable": true,
+        "center": true,
+        "acceptFirstMouse": false,
+        "focus": true,
+        "minHeight": 750,
+        "minWidth": 950,
+        "closable": false,
+        "title": "Bitac",
+        "width": 1000,
+        "height": 800,
+        "transparent": true,
+        "theme": "Light",
+        "decorations": true,
+        "skipTaskbar": false,
+        "fileDropEnabled": false,
+        "titleBarStyle": "Overlay"
+      }
+    ]
+  }
+}
