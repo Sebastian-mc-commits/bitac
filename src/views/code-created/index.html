@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css">
+    <title>Bc</title>
+</head>
+
+<body hidden>
+    <script src="../../utils/functions/DOM/header/index.js" type="module"></script>
+    <component-header></component-header>
+
+    <div class="blur-effect-1"></div>
+    <div class="blur-effect-2"></div>
+    <main id="mainContainer" class="main-container">
+        <div class="code-render">
+            <p>Tu Código</p>
+            <h1 data-reduce-render="setCode" data-reduce-type="codeElement">***</h1>
+            <span class="copy">
+                <img data-reduce-type="copyCode" src="../../assets/icons/copy.svg" alt="Copy" class="icon">
+            </span>
+        </div>
+
+        <div class="code-generator">
+            <button data-reduce-type="reGenerateCode">Generar nuevo codigo</button>
+        </div>
+    </main>
+
+    <script src="./main.js" type="module"></script>
+</body>
+<script src="../../utils/functions/DOM/footer/index.js" type="module"></script>
+<component-footer></component-footer>
+
+</html>

@@ -13,12 +13,12 @@ export default class extends Invoke {
 
     _fetch = async (type) => await this.useInvoke({
         invokeType: type,
-        errorCase: ({ custom_message }) => this.#tauriUtils.message(custom_message)
+        errorCase: ({ custom_message = "Error inesperado" }) => this.#tauriUtils.message(custom_message)
     })
 
     _fetchWithParams = async (type, params) => await this.useInvoke({
         invokeType: type,
-        errorCase: ({ custom_message }) => this.#tauriUtils.message(custom_message),
+        errorCase: ({ custom_message = "Error inesperado" }) => this.#tauriUtils.message(custom_message),
         invokeValue: params
     })
 }

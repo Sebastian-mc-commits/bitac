@@ -508,3 +508,19 @@ select:focus {
   border-color: var(--teal-green);
   outline: none;
 }
+
+.icon {
+  min-height: 1rem;
+  max-height: 3rem;
+  width: fit-content;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 0.2rem;
+  margin: 0.7rem;
+  transition: transform 0.2s;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}

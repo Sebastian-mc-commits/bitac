@@ -1,0 +1,39 @@
+.main-container {
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    max-width: 70%;
+}
+
+.code-render h1 {
+    font-size: 10rem;
+    font-weight: bold;
+}
+
+.copy {
+    position: absolute;
+    bottom: 2rem;
+    right: 0;
+}
+
+.blur-effect-1 {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    filter: blur(10rem);
+    width: 50%;
+    height: 10rem;
+    background-color: var(--teal-green);
+}
+
+.blur-effect-2 {
+    position: absolute;
+    top: 40%;
+    right: 50%;
+    filter: blur(12rem);
+    width: 50%;
+    height: 15rem;
+    background-color: var(--blue);
+}

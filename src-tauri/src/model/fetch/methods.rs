@@ -36,6 +36,46 @@ where
     }
 }
 
+pub async fn delete_request<T>(url: &str) -> Result<T, ErrorResponse>
+where
+    T: DeserializeOwned + Serialize,
+{
+    let client = reqwest::Client::new();
+    let resp = client.delete(url).send().await.map_err(|e| ErrorResponse {
+        custom_message: String::from("Error inesperado"),
+        http_status_code: 500,
+        message: e.to_string(),
+    })?;
+
+    let status_code = resp.status().as_u16();
+
+    match resp.json::<T>().await {
+        Err(e) => {
+            let error_response = ErrorResponse {
+                custom_message: String::from("Error inesperado"),
+                http_status_code: status_code,
+                message: e.to_string(),
+            };
+
+            Err(error_response)
+        }
+
+        Ok(res) => Ok(res),
+    }
+}
+
+pub async fn delete_request_no_json(url: &str) -> Result<(), ErrorResponse> {
+    let client = reqwest::Client::new();
+
+    client.delete(url).send().await.map_err(|e| ErrorResponse {
+        custom_message: String::from("Error inesperado"),
+        http_status_code: 500,
+        message: e.to_string(),
+    })?;
+
+    Ok(())
+}
+
 pub async fn post_request<T, R>(url: &str, data: R) -> Result<T, ErrorResponse>
 where
     T: DeserializeOwned + Serialize,

@@ -2,6 +2,7 @@ use tauri::{CustomMenuItem, Menu, Submenu};
 
 pub fn render_menu() -> Menu {
     let auth = CustomMenuItem::new("auth".to_string(), "autenticacion");
+
     let cities_transports = CustomMenuItem::new(
         "cities_transports".to_string(),
         "Crear Ciudades y transportes",

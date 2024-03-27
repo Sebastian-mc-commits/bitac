@@ -2,10 +2,14 @@
 
 mod config;
 mod model;
+mod services;
 mod utils;
 
 extern crate dotenv;
-use std::sync::Mutex;
+use std::{
+    borrow::{Borrow, BorrowMut},
+    sync::{Arc, Mutex},
+};
 
 use config::database::create_tables;
 use model::{
@@ -13,16 +17,16 @@ use model::{
     fetch::{
         self,
         data_transfer::{
-            generate_code, obtain_transferred_data_by_code, obtain_transferred_data_by_code_and_set,
+            delete_data_by_code, generate_code, get_stored_code, obtain_transferred_data_by_code,
+            obtain_transferred_data_by_code_and_set,
         },
     },
     sender::{obtain_sender_details, set_favorite},
-    use_delete,
-    use_delete_all::use_delete_all,
-    use_insert, use_select, use_update,
+    use_delete, use_insert, use_select, use_update,
 };
 use serde::Deserialize;
-use tauri::{command, Manager};
+use services::key_values::key_value_code;
+use tauri::{command, App, Manager};
 use utils::{menu::render_menu, menu_event::menu_event_window, use_type::EventTypes};
 use uuid::Uuid;
 
@@ -64,26 +68,29 @@ async fn main() {
             generate_code,
             obtain_transferred_data_by_code,
             obtain_transferred_data_by_code_and_set,
+            key_value_code,
+            get_stored_code,
+            delete_data_by_code
         ])
-        .setup(|app| {
-            let event_id = app.listen_global("methods", |handler| {
-                let mut return_type = Mutex::new(None);
-                let mut return_type_guard = return_type.lock().unwrap();
-                match handler.payload() {
-                    Some(param) => {
-                        let new_data: Result<EventParams, _> = serde_json::from_str(param);
+        .setup(move |app| {
+            // let event_id = app.listen_global("methods", |handler| {
+            //     let mut return_type = Mutex::new(None);
+            //     let mut return_type_guard = return_type.lock().unwrap();
+            //     match handler.payload() {
+            //         Some(param) => {
+            //             let new_data: Result<EventParams, _> = serde_json::from_str(param);
 
-                        match new_data {
-                            Ok(data) => {
-                                let mut r = return_type_guard;
-                                *r = Some(event_methods::event_methods(data));
-                            }
-                            Err(_) => (),
-                        };
-                    }
-                    None => (),
-                };
-            });
+            //             match new_data {
+            //                 Ok(data) => {
+            //                     let mut r = return_type_guard;
+            //                     *r = Some(event_methods::event_methods(data));
+            //                 }
+            //                 Err(_) => (),
+            //             };
+            //         }
+            //         None => (),
+            //     };
+            // });
             Ok(())
         })
         .menu(render_menu())

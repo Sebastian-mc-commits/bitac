@@ -17,4 +17,11 @@ export default class extends BackupGlobal {
         this.invokeTypes.SET_DATA_BY_CODE,
         { code }
     )
+
+    removeCode = async (code) => this._fetchWithParams(
+        this.invokeTypes.DELETE_DATA_BY_CODE,
+        { code }
+    )
+
+    getStoredCode = async () => await this._fetch(this.invokeTypes.GET_STORED_CODE)
 }

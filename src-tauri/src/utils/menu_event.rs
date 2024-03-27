@@ -1,4 +1,6 @@
-use tauri::WindowMenuEvent;
+use tauri::{Manager, WindowBuilder, WindowMenuEvent, WindowUrl};
+
+use crate::services::{key_value_service::KeyValueStoreMethods, key_values::key_value_code};
 #[derive(Clone, serde::Serialize)]
 struct Payload {
     go: String,
@@ -21,11 +23,15 @@ pub fn menu_event_window(event: WindowMenuEvent) {
 
     match event.menu_item_id() {
         "auth" => {
+            let exist_code = key_value_code("_".to_string()).full_path().exists();
+
+            let view = if exist_code { "code-created" } else { "auth" }.to_string();
+
             window
                 .emit(
                     &view_event,
                     Payload {
-                        go: selected_view(String::from("auth")).into(),
+                        go: selected_view(view).into(),
                     },
                 )
                 .unwrap();
@@ -68,7 +74,12 @@ pub fn menu_event_window(event: WindowMenuEvent) {
 
         "delete_all" => {
             window
-                .emit("methods", MethodsPayload { method: "delete_all" })
+                .emit(
+                    "methods",
+                    MethodsPayload {
+                        method: "delete_all",
+                    },
+                )
                 .unwrap();
         }
 

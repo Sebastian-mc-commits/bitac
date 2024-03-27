@@ -7,6 +7,7 @@ pub mod database;
 pub trait UrlMethods {
     fn generates_code(&self) -> String;
     fn obtain_transferred_data_by_code(&self, code: &str) -> String;
+    fn remove_code(&self, code: &str) -> String;
 }
 
 #[derive(Clone)]
@@ -24,6 +25,10 @@ impl UrlMethods for UrlSettings {
             "{}/api/dataTransfer/obtainTransferredDataByCode?code={}",
             self.url, code
         )
+    }
+
+    fn remove_code(&self, code: &str) -> String {
+        format!("{}/api/dataTransfer/removeCode/{}", self.url, code)
     }
 }
 

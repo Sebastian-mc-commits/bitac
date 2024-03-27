@@ -1,5 +1,3 @@
-import { useSignalJs } from "../helpers/index.js"
-
 export default class {
 
   constructor() {
@@ -14,7 +12,9 @@ export default class {
       USE_DELETE: "use_delete",
       GENERATE_CODE: "generate_code",
       OBTAIN_TRANSFERRED_DATA_BY_CODE: "obtain_transferred_data_by_code",
-      SET_DATA_BY_CODE: "obtain_transferred_data_by_code_and_set"
+      SET_DATA_BY_CODE: "obtain_transferred_data_by_code_and_set",
+      GET_STORED_CODE: "get_stored_code",
+      DELETE_DATA_BY_CODE: "delete_data_by_code"
     }
   }
 

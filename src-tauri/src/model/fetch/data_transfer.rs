@@ -5,10 +5,11 @@ use crate::{
         data_types::{City, DBTypes, Destination, Sender, Transporter},
     },
     model::use_insert::multiple_plain_insert,
+    services::{key_value_service::KeyValueStoreMethods, key_values::key_value_code},
     use_select,
     utils::Tables,
 };
-use fetch::methods::{get_request, post_request, ErrorResponse};
+use fetch::methods::{delete_request_no_json, get_request, post_request, ErrorResponse};
 use use_select::plain_select;
 
 use serde::{Deserialize, Serialize};
@@ -49,7 +50,13 @@ pub async fn generate_code() -> Result<GenerateCodeReturn, ErrorResponse> {
 
     let url = url_settings().generates_code();
 
-    post_request::<GenerateCodeReturn, GenerateCodeParams>(url.as_str(), d).await
+    match post_request::<GenerateCodeReturn, GenerateCodeParams>(url.as_str(), d).await {
+        Ok(r) => {
+            key_value_code((&*r.code).to_string()).insert_and_replace();
+            Ok(r)
+        }
+        Err(e) => Err(e),
+    }
 }
 
 #[command]
@@ -57,8 +64,6 @@ pub async fn obtain_transferred_data_by_code(
     code: &str,
 ) -> Result<DataByCodeReturn, ErrorResponse> {
     let url = url_settings().obtain_transferred_data_by_code(code);
-
-    println!("{}", &url);
 
     get_request::<DataByCodeReturn>(url.as_str()).await
 }
@@ -86,14 +91,25 @@ pub async fn obtain_transferred_data_by_code_and_set(code: &str) -> Result<Strin
     }
 }
 
-// #[command]
-// pub async fn get_data_and_set() -> Result<String, ErrorResponse> {
-//     match generate_code().await {
-//         Ok(cd) => {
-//             let code = cd.code;
+#[command]
+pub fn get_stored_code() -> String {
+    if let Ok(code) = key_value_code("_".to_string()).get() {
+        code.code
+    } else {
+        "DESCONOCIDO".to_string()
+    }
+}
 
-//             obtain_transferred_data_by_code_and_set(code.as_str()).await
-//         }
-//         Err(error_response) => Err(error_response)
-//     }
-// }
+#[command]
+pub async fn delete_data_by_code(code: &str) -> Result<(), ErrorResponse> {
+    let url = url_settings().remove_code(code);
+
+    println!("{}", &url);
+    match delete_request_no_json(url.as_str()).await {
+        Ok(_) => {
+            key_value_code(code.to_string()).remove();
+            Ok(())
+        }
+        Err(e) => Err(e),
+    }
+}
