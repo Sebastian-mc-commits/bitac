@@ -1,4 +1,4 @@
-import { BounceAnimation, Input, PageLoader } from "../../components/index.js";
+import { BounceAnimation, CodeRender, Dots, Input, PageLoader } from "../../components/index.js";
 import { UseReducer, toggleTypes } from "../../helpers/index.js";
 import TauriUtils from "../../models/TauriUtils.js";
 import { DataTransfer } from "../../models/backup/index.js";
@@ -103,4 +103,18 @@ codeState.init(
 
 export const pageLoader = new PageLoader({
   id: "1"
+})
+
+export const pageLoader_2 = new PageLoader({
+  id: "2"
+})
+
+export const dots = new Dots({
+  id: "1",
+  title: "Cargando Datos"
+})
+export const codeRender = new CodeRender({
+  id: "1",
+  tag: "h2",
+  word: "SDFKLDFSHL0SDFA6"
 })

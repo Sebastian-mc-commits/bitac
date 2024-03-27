@@ -1,4 +1,5 @@
-import { bounceComponent, codeState, dataTransfer, pageLoader, tauriUtils, useReducer } from "./index.js";
+import { delay } from "../../lib/threads/thread.js";
+import { bounceComponent, codeRender, codeState, dataTransfer, dots, pageLoader, pageLoader_2, tauriUtils, useReducer } from "./index.js";
 
 useReducer.init({
   changeFormState: () => {
@@ -7,21 +8,42 @@ useReducer.init({
 
   getCode: async () => {
     pageLoader.active()
+    codeRender.init("NOTHING")
     const code = await dataTransfer.generatesCode()
 
-    console.log("Code: ", code)
+    if (dataTransfer.hasError) {
+      codeRender.stop("NOTHING")
+      pageLoader.inactive()
+      return
+    }
+
+    codeRender.stop(code.code)
+    await delay(900)
+    location.href = "../code-created/index.html"
   },
 
   setDataByCode: async ({ context }) => {
     const { code: { element: codeElement } } = context()
+    dots.init()
+    pageLoader_2.active()
 
     if (codeElement.value.length === 0) {
       tauriUtils.message("Código Invalido")
+      pageLoader_2.inactive()
       return
     }
 
-    const code = await dataTransfer.setDataByCode("ZZ29YFFDZKZ7FUYQNCNTC")
-    console.log(code)
+    await dataTransfer.setDataByCode(codeElement.value)
+
+    if (dataTransfer.hasError) {
+      pageLoader_2.inactive()
+      return
+    }
+
+    const on = dots.setTextAndRestore("¡Código en uso!")
+    await delay(1000)
+    pageLoader_2.inactive(on)
+    location.href = "../code-created/index.html"
   },
 
   changeCodeOpsState: () => {

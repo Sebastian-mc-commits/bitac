@@ -70,20 +70,32 @@ pub async fn obtain_transferred_data_by_code(
 
 #[command]
 pub async fn obtain_transferred_data_by_code_and_set(code: &str) -> Result<String, ErrorResponse> {
+    let error_trait = |e| ErrorResponse {
+        custom_message: "Error al insertar los datos".to_string(),
+        message: "".to_string(),
+        http_status_code: 500,
+    };
+
     match obtain_transferred_data_by_code(code).await {
         Ok(data) => {
             let transferred_data = data.transferred_data;
 
-            multiple_plain_insert::<City>(Tables::City, transferred_data.cities);
+            multiple_plain_insert::<City>(Tables::City, transferred_data.cities)
+                .map_err(error_trait)?;
             multiple_plain_insert::<Transporter>(
                 Tables::Transporter,
                 transferred_data.transporters,
-            );
-            multiple_plain_insert::<Sender>(Tables::Sender, transferred_data.senders);
+            )
+            .map_err(error_trait)?;
+            multiple_plain_insert::<Sender>(Tables::Sender, transferred_data.senders)
+                .map_err(error_trait)?;
             multiple_plain_insert::<Destination>(
                 Tables::Destination,
                 transferred_data.destinations,
-            );
+            )
+            .map_err(error_trait)?;
+
+            key_value_code((&*data.code).to_string()).insert_and_replace();
 
             Ok(data.code)
         }

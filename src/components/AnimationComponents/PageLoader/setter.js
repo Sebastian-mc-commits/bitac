@@ -31,6 +31,7 @@ export default class PageLoaderSetter {
         })
         this._helperMethods._whenDefined()
     }
+
     #componentHTML = () => {
 
         const { pageContainer } = this._pageLoaderStyles
@@ -44,6 +45,12 @@ export default class PageLoaderSetter {
     #whenDefined = () => {
 
         const loaderContainer = this._helperMethods.element
+        const mainComponent = loaderContainer.parentElement
+        this.children = mainComponent.querySelectorAll(`:not(${this.#identifier})`)
+
+        if (this._helperMethods.id == "2") {
+            console.log(this)
+        }
 
         for (const child of this.children) {
             loaderContainer.append(child)
@@ -54,11 +61,8 @@ export default class PageLoaderSetter {
     /**
      * @param {HTMLElement} componentObject 
      */
-    #effect = (componentObject) => {
+    #effect = async () => {
 
         setLinkStyles(import.meta.url)
-
-        this.children = componentObject.querySelectorAll(`:not(${this.#identifier})`)
     }
-
 }

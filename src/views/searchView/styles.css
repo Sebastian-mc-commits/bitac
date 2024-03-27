@@ -39,7 +39,6 @@ body {
   position: fixed;
   right: 0;
   width: 45%;
-  /* border-left: 2px var(--dusky) solid; */
   padding: 2rem;
   overflow: auto;
   max-height: 70%;
@@ -85,19 +84,19 @@ body {
 }
 
 .renderContent {
-  color: var(--teal-green);
-  max-height: 60vh;
+  max-height: 45vh;
   overflow: auto;
 }
 
 div.renderContent div {
   display: flex;
-  flex-direction: column;
-  margin: 1rem auto;
-  max-width: 100%;
-  background-color: var(--mint-green);
-  padding: 3rem;
-  border-radius: var(--radius);
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0.5rem 0;
+  width: fit-content;
+  background-color: var(--dark-cyan);
+  padding: 1rem;
+  border-radius: 5px;
 }
 
 .translateXContainer {
@@ -130,7 +129,6 @@ div.renderContent div {
 
 .headerPrintMessage {
   position: absolute;
-  /* width: 50%; */
   top: 0;
   right: 70%;
 }

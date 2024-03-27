@@ -105,3 +105,8 @@
   max-width: 90%;
   overflow-wrap: break-word;
 }
+
+.export-import span {
+  display: flex;
+  gap: 1rem;
+}

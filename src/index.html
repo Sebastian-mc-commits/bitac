@@ -5,15 +5,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./createView.css">
+  <link rel="stylesheet" href="./lib/header/global.css">
   <title>Bc</title>
 </head>
 
+<script src="./lib/header/index.js" type="module"></script>
+
 <body hidden>
-  <script src="./utils/functions/DOM/header/index.js" type="module"></script>
   <component-header></component-header>
   <component-half-page-modal></component-half-page-modal>
   <section class="print">
-    <component-header-message-initializer data-modal-header-id="headerPrintMessage"></component-header-message-initializer>
+    <component-header-message-initializer
+      data-modal-header-id="headerPrintMessage"></component-header-message-initializer>
   </section>
   <main class="container">
     <div class="selectEventContainer">
@@ -81,7 +84,7 @@
   <component-modal-footer></component-modal-footer>
   <script src="./main.js" type="module"></script>
 </body>
-<script src="./utils/functions/DOM/footer/index.js" type="module"></script>
+<script src="./lib/footer/index.js" type="module"></script>
 <component-footer></component-footer>
 
 </html>

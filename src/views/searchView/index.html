@@ -5,10 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="../../lib/header/global.css">
   <title>Bc</title>
 </head>
 
-<script src="../../utils/functions/DOM/header/index.js" type="module"></script>
+<script src="../../lib/header/index.js" type="module"></script>
 <component-header></component-header>
 
 <body hidden>
@@ -29,9 +30,7 @@
     <nav class="renderContentContainer">
       <section class="renderContentSectionContainer" id="renderContentSectionContainer">
         <div class="renderContent" data-reduce-render="renderSenderValues"></div>
-        <button data-reduce-type="onClickCompanyRender" class="custom-button-1" data-text="CAMBIAR">
-          Cambiar
-        </button>
+        <button class="custom-button-3" data-reduce-type="onClickCompanyRender">Cambiar</button>
       </section>
       <section class="renderData" data-reduce-type="onRenderData" data-mousemove-type="onSelectData">
         <div id="renderContainer" data-reduce-render="renderContainer" data-reduce-type="inputPrintQuantity"></div>
@@ -40,7 +39,7 @@
   </main>
   <component-modal-footer></component-modal-footer>
 </body>
-<script src="../../utils/functions/DOM/footer/index.js" type="module"></script>
+<script src="../../lib/footer/index.js" type="module"></script>
 <component-footer></component-footer>
 <script type="module" src="main.js"></script>
 

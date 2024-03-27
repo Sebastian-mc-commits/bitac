@@ -38,10 +38,6 @@ useReducer.init({
             `
         })
     },
-
-    // handleCheckboxChange: ({ target }) => {
-    //     
-    // }
 })
 
 useReducer.render({

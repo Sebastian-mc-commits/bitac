@@ -73,24 +73,24 @@ async fn main() {
             delete_data_by_code
         ])
         .setup(move |app| {
-            // let event_id = app.listen_global("methods", |handler| {
-            //     let mut return_type = Mutex::new(None);
-            //     let mut return_type_guard = return_type.lock().unwrap();
-            //     match handler.payload() {
-            //         Some(param) => {
-            //             let new_data: Result<EventParams, _> = serde_json::from_str(param);
+            let event_id = app.listen_global("methods", |handler| {
+                let mut return_type = Mutex::new(None);
+                let mut return_type_guard = return_type.lock().unwrap();
+                match handler.payload() {
+                    Some(param) => {
+                        let new_data: Result<EventParams, _> = serde_json::from_str(param);
 
-            //             match new_data {
-            //                 Ok(data) => {
-            //                     let mut r = return_type_guard;
-            //                     *r = Some(event_methods::event_methods(data));
-            //                 }
-            //                 Err(_) => (),
-            //             };
-            //         }
-            //         None => (),
-            //     };
-            // });
+                        match new_data {
+                            Ok(data) => {
+                                let mut r = return_type_guard;
+                                *r = Some(event_methods::event_methods(data));
+                            }
+                            Err(_) => (),
+                        };
+                    }
+                    None => (),
+                };
+            });
             Ok(())
         })
         .menu(render_menu())

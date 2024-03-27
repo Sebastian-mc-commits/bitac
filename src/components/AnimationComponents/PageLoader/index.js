@@ -14,10 +14,11 @@ export default class extends BounceSetter {
         loaderContainer.classList.add(this._pageLoaderStyles.activePageLoader)
     }
 
-    inactive = () => {
+    inactive = (whenClose = () => { }) => {
         const loaderContainer = this._helperMethods.element
 
         loaderContainer.classList.remove(this._pageLoaderStyles.activePageLoader)
+        setTimeout(whenClose, 500)
     }
 
     toggle = () => {
@@ -33,6 +34,23 @@ export default class extends BounceSetter {
         const loaderContainer = this._helperMethods.element
 
         return loaderContainer.classList.contains(this._pageLoaderStyles.activePageLoader)
+    }
+
+    activeWithHTML = (HTML) => {
+        const loaderContainer = this._helperMethods.element
+
+        const prevHTML = loaderContainer.innerHTML
+
+        loaderContainer.innerHTML = HTML
+
+        this.active()
+
+        return () => {
+            this.inactive()
+            setTimeout(() => {
+                loaderContainer.innerHTML = prevHTML
+            }, 500)
+        }
     }
 
 }

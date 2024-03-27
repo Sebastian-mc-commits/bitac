@@ -68,8 +68,13 @@ export const cityAndTransporterHTML = ({
 export const iterateByElements = (data, handler) => {
   let HTML = ""
 
-  for (const d of data) {
-    HTML += handler(d)
+  if (data.length === 0) {
+    HTML = "<section>No hay datos en esta sección</section>"
+  }
+  else {
+    for (const d of data) {
+      HTML += handler(d)
+    }
   }
 
   return HTML

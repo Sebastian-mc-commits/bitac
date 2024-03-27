@@ -34,7 +34,7 @@ pub fn use_insert(params: InsertParams) -> bool {
     }
 }
 
-pub fn multiple_plain_insert<T>(table: Tables, data: Vec<T>)
+pub fn multiple_plain_insert<T>(table: Tables, data: Vec<T>) -> Result<(), sqlite::Error>
 where
     T: Serialize,
 {
@@ -50,6 +50,8 @@ where
             values
         ));
 
-        _conn.execute(query).unwrap();
+        _conn.execute(query)?;
     }
+
+    Ok(())
 }

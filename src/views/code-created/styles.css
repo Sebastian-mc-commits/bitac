@@ -37,3 +37,10 @@
     height: 15rem;
     background-color: var(--blue);
 }
+
+.code-generator {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    align-items: center;
+}

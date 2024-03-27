@@ -6,10 +6,10 @@ export default class {
     id,
     idSelector,
     componentTag,
-    whenDefined,
     componentHTML,
-    connectedCallbackOptions,
     params,
+    connectedCallbackOptions = () => null,
+    whenDefined = () => null,
     firstSelect = ""
   }) => await new Promise(resolve => {
 
@@ -41,12 +41,11 @@ export default class {
     resolve()
   })
 
-  #component = (connectedCallbackOptions) => class extends HTMLElement {
 
+  #component = (connectedCallbackOptions) => class extends HTMLElement {
     constructor() {
       super()
 
-      // this.innerHTML = ""
       this.connectedCallbackOptions = connectedCallbackOptions
     }
 

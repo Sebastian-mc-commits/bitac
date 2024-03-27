@@ -96,11 +96,6 @@ button {
   outline: none;
 }
 
-input:not(:disabled):hover,
-button:not(:disabled) {
-  /* filter: drop-shadow(0 0 4em var(--green)); */
-}
-
 button,
 input[type="submit"] {
   cursor: pointer;
@@ -264,16 +259,15 @@ select:focus {
   align-items: flex-start;
   transition: all 0.5s;
   cursor: pointer;
-  background-color: white;
+  background-color: var(--dark-cyan);
 }
 
 .renderContent:nth-child(even):hover {
-  background-color: var(--light);
-  border: 1px var(--green) solid;
+  background-color: var(--teal-green);
 }
 
 .renderContent:nth-child(odd) {
-  background-color: var(--green);
+  background-color: var(--teal-green);
 }
 
 .renderContent:nth-child(odd) button {
@@ -282,9 +276,8 @@ select:focus {
 }
 
 .renderContent:nth-child(odd):hover {
-  background-color: white;
-  border: 1px var(--green) solid;
-  filter: grayscale(1);
+  background-color: var(--dark-cyan);
+  filter: grayscale(0.5);
 }
 
 .renderDetailOptions {
@@ -523,4 +516,8 @@ select:focus {
 
 .icon:hover {
   transform: scale(1.2);
+}
+
+.blur-1rem {
+  filter: blur(0.5rem);
 }

@@ -1,7 +1,7 @@
 use tauri::{CustomMenuItem, Menu, Submenu};
 
 pub fn render_menu() -> Menu {
-    let auth = CustomMenuItem::new("auth".to_string(), "autenticacion");
+    let auth = CustomMenuItem::new("auth".to_string(), "Obtención envió de datos");
 
     let cities_transports = CustomMenuItem::new(
         "cities_transports".to_string(),
@@ -18,7 +18,10 @@ pub fn render_menu() -> Menu {
 
     let render_data = CustomMenuItem::new("render_data".to_string(), "Datos creados");
 
-    let more_submenu = Submenu::new("Mas...", Menu::new().add_item(delete_all).add_item(close));
+    let more_submenu = Submenu::new(
+        "Ventana...",
+        Menu::new().add_item(delete_all).add_item(close),
+    );
 
     let submenu = Submenu::new(
         "Opciones",

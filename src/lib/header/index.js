@@ -38,8 +38,6 @@ class Header extends HTMLElement {
   }
 
   connectedCallback() {
-    setLinkStyles(import.meta.url)
-
     setTimeout(() => {
       document.body.hidden = false
     }, 500)
@@ -48,4 +46,5 @@ class Header extends HTMLElement {
     event?.listen("methods", methods)
   }
 }
+
 customElements.define("component-header", Header)
